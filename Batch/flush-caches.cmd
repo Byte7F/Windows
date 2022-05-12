@@ -161,6 +161,38 @@ call :flush_binary "%use_userprofile%\AppData\Local\Microsoft\Edge\User Data\Def
 call :flush_binary "%use_userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\Media Cache\Cache_Data"
 call :flush_binary "%use_userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\System Cache"
 call :flush_binary "%use_userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\System Cache\Cache_Data"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\INetCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\INetHistory"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\Microsoft\CryptnetUrlCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\BingPageDataCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\Cache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\History"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\IECompatCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\IECompatUaCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\IEFlipAheadCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\User\Default\DownloadHistory"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\Temp"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\TokenBroker\Cache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AppData\User\Default\CacheStorage"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AppData\User\Default\Indexed DB"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\LocalCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\TempState"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\INetCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\INetHistory"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\Microsoft\CryptnetUrlCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\BingPageDataCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\Cache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\History"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\IECompatCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\IECompatUaCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\IEFlipAheadCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\MicrosoftEdge\User\Default\DownloadHistory"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\Temp"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AC\TokenBroker\Cache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AppData\User\Default\CacheStorage"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\AppData\User\Default\Indexed DB"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\LocalCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe\TempState"
 
 call :echo_info Flushing Mozilla Firefox caches...
 for /D %%D in ("%use_userprofile%\AppData\Local\Mozilla\Firefox\Profiles\*") do (
@@ -195,6 +227,21 @@ call :echo_info Flushing AMD caches...
 call :flush_entire "%use_userprofile%\AppData\Local\AMD\DxCache"
 call :flush_entire "%use_userprofile%\AppData\Local\AMD\GLCache"
 call :flush_entire "%use_userprofile%\AppData\Local\AMD\VkCache"
+
+call :echo_info Flushing Microsoft SkyDrive caches...
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\AppCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\INetCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\INetHistory"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\Microsoft\CryptnetUrlCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\Microsoft\Internet Explorer\DOMStore"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\Temp"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\TokenBroker\Cache"
+
+call :echo_info Flushing Microsoft GamingApp caches...
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\AC\AMD\DxCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\AC\Microsoft\CryptnetUrlCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\LocalCache"
+call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\TempState"
 
 if "%restart_wuauserv%"=="1" (
  call :echo_info Restarting Service "wuauserv" ...
