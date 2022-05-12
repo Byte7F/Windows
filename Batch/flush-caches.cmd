@@ -1,6 +1,13 @@
 @echo OFF
 setLocal enableDelayedExpansion
 
+:: NOTE:             personally; used in "Command Prompt" with "Administrator" privs, qa.: [Win]+[X] -> [A]dmin Command Prompt
+:: Install location: "%windir%\System32\flush-caches.cmd"
+:: Command usage:    flush-caches
+::                                -cls              :: clears screen (useful for multiple execs), keeping cmd-lbl/args visible
+::                                --use-event [0|1] :: opens "Event Viewer" if you feel generous to manually scan & clear logs
+::                                --use-procs [0|1] :: opens an array of built-in Cleaners: DiskCleanup, WinStoreReset, DeFrag
+
 :options_
 set use_userprofile=%userprofile%\
 set use_eventvwr=0
