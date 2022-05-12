@@ -7,6 +7,7 @@ setLocal enableDelayedExpansion
 ::                                -cls              :: clears screen (useful for multiple execs), keeping cmd-lbl/args visible
 ::                                --use-event [0|1] :: opens "Event Viewer" if you feel generous to manually scan & clear logs
 ::                                --use-procs [0|1] :: opens an array of built-in Cleaners: DiskCleanup, WinStoreReset, DeFrag
+:: NOTE:             also removes some FileExplorer/WebBrowser history, will add toggle-arg later, am big tired.
 
 :options_
 set use_userprofile=%userprofile%\
