@@ -1,6 +1,7 @@
 # Notice
 
- My scripts may not be foolproof, or may not work for your version/language.
-  Please consider taking a look over these before determining committing to any usage.
+ My scripts may not be foolproof and/or may not work for your version/language.
 
- These were solely made for personal use, but I know the scripts or their contents may be useful.
+ Please consider taking a look over these before committing to any usage.
+
+ These were solely made for personal use, but I thought the scripts/contents may be useful.
