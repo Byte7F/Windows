@@ -312,14 +312,14 @@
 @call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\LocalCache"
 @call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\TempState"
 
+:: popd & dip
+@cd /d "%~dp0"
+
 :: HANDLE: end_wuauserv
 @if "%restart_wuauserv%"=="1" @(
  @call :echo_info Restarting Service "wuauserv" ...
  @net start wuauserv
 )
-
-:: popd & dip
-@cd /d "%~dp0"
 
 :: HANDLE: use_procs
 @if "%use_procs%"=="1" @(
