@@ -1,5 +1,3 @@
-@setLocal
-
 :: Script usage:
 ::               installation: %windir%\System32\flush-caches.cmd
 ::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
@@ -14,6 +12,9 @@
 :: NOTE:
 ::       Removes FileExplorer/WebBrowser/Download history and Prefetch/DirectX/AMD caches (among many other things).
 ::       Please delete any @call :flush_* "*" lines you don't want to commit to (you should probably check the list).
+::
+
+@setLocal
 
 @set args=%*
 
