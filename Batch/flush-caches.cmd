@@ -14,7 +14,7 @@
 ::       Please delete any @call :flush_* "*" lines you don't want to commit to (you should probably check the list).
 ::
 
-@setLocal
+@setLocal enableDelayedExpansion
 
 @set args=%*
 
@@ -49,12 +49,12 @@
 @set head=
 @set tail=
 @for %%a in (%args%) do @(
- @set tail=%head%
+ @set tail=!head!
  @set head=%%a
- @if "%tail%"=="--user"      @set "use_user=%head%" & @for %%D in ("%userprofile%\..\%use_user%\") do @set use_userprofile=%%~dpD
- @if "%tail%"=="--use-event" @set use_eventvwr=%head%
- @if "%tail%"=="--use-procs" @set use_procs=%head%
- @if "%tail%"=="--kill-auto" @set end_wuauserv=%head%
+ @if "!tail!"=="--user"      @set "use_user=!head!" & @for %%D in ("!userprofile!\..\!use_user!\") do @set use_userprofile=%%~dpD
+ @if "!tail!"=="--use-event" @set use_eventvwr=!head!
+ @if "!tail!"=="--use-procs" @set use_procs=!head!
+ @if "!tail!"=="--kill-auto" @set end_wuauserv=!head!
 )
 @set use_userprofile=%use_userprofile:~0,-1%
 :_parse
