@@ -1,3 +1,10 @@
+:: Script usage:
+::               installation: %windir%\System32\kill.cmd
+::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
+::
+:: Command usage:
+::                kill [<*>.exe|<name>|all <type>|all]
+::
 @SetLocal
 @set args=%*
 @goto :skip
