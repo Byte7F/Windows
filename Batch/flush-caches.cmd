@@ -51,12 +51,18 @@
 @for %%a in (%args%) do @(
  @set tail=!head!
  @set head=%%a
- @if "!tail!"=="--user"      @set "use_user=!head!" & @for %%D in ("!userprofile!\..\!use_user!\") do @set use_userprofile=%%~dpD
+ @set head=!head:"=!
+ @if "!tail!"=="--user"      @set use_user=!head!
  @if "!tail!"=="--use-event" @set use_eventvwr=!head!
  @if "!tail!"=="--use-procs" @set use_procs=!head!
  @if "!tail!"=="--kill-auto" @set end_wuauserv=!head!
 )
+@for %%D in ("%userprofile%\..\%use_user%\") do @set use_userprofile=%%~dpD
 @set use_userprofile=%use_userprofile:~0,-1%
+@set i=0
+:continue
+@set /a i += 1
+@for /f "tokens=%i% delims=\" %%a in ("%use_userprofile%") do @if not "%%a"=="" @set "use_user=%%a" & @goto :continue
 :_parse
 
 @echo.
