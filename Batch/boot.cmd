@@ -1,3 +1,10 @@
+:: Script usage:
+::               installation: %windir%\System32\boot.cmd
+::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
+::
+:: Command usage:
+::                boot [<*>.exe|<name>]
+::
 @SetLocal
 @set id_md5_uefn=7f138a09169b250e9dcb378140907378
 @set args=%*
