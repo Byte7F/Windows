@@ -29,7 +29,7 @@
 :help_
 @echo.
 @echo flush-caches
-@echo              --user [username] :: sets profile for data to be cleared of, uses current username otherwise   &REM use_userprofile;use_user
+@echo              --user [username] :: sets profile for data to be cleared of, uses current username otherwise   &REM use_user;use_userprofile
 @echo              --use-event [0^|1] :: opens "Event Viewer" if you feel generous to manually scan ^& clear logs &REM use_eventvwr
 @echo              --use-procs [0^|1] :: opens an array of built-in Cleaners: DiskCleanup, WinStoreReset, DeFrag  &REM use_procs
 @echo              --kill-auto [0^|1] :: keeps "Windows Update: Auto-Update (Service)" ^(wuauserv^) stopped       &REM end_wuauserv
