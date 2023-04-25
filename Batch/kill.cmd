@@ -11,9 +11,9 @@
 :func
 @set proc=%3
 @set proc=%proc:"=%
-@if "%args%"=="all"    @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%1/%2"  ) || @echo inactive: "%1/%2"  )
-@if "%args%"=="all %1" @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%1/%2"  ) || @echo inactive: "%1/%2"  )
-@if "%args%"=="%2"     @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%1/%2"  ) || @echo inactive: "%1/%2"  )
+@if "%args%"=="all"    @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%2"     ) || @echo inactive: "%2"     )
+@if "%args%"=="all %1" @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%2"     ) || @echo inactive: "%2"     )
+@if "%args%"=="%2"     @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%2"     ) || @echo inactive: "%2"     )
 @if "%1 %2"=="* *"     @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%proc%" ) || @echo inactive: "%proc%" )
 @exit /b 0
 :skip
