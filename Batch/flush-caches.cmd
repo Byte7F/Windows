@@ -200,20 +200,20 @@
 @call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\AppCache"
 @call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Caches"
 
-@call :echo_info Flushing Windows Explorer File History caches...
-@call :flush_entire "%use_userprofile%\Recent"
-@call :flush_entire "%use_userprofile%\AppData\Roaming\Microsoft\Windows\Recent"
-
-@call :echo_info Flushing Windows Explorer Icon History caches...
-@call :flush_hidden "%use_userprofile%\AppData\Local\IconCache.db"
-@call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Explorer\IconCacheToDelete"
-@call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDelete"
-
 @call :echo_info Flushing Windows Update caches...
 @call :flush_entire "%systemroot%\SoftwareDistribution\Download"
 @call :flush_entire "%systemroot%\SoftwareDistribution\EventCache"
 @call :flush_entire "%systemroot%\SoftwareDistribution\PostRebootEventCache"
 @call :flush_entire "%systemroot%\SoftwareDistribution\PostRebootEventCache.V2"
+
+@call :echo_info Flushing Explorer File History caches...
+@call :flush_entire "%use_userprofile%\Recent"
+@call :flush_entire "%use_userprofile%\AppData\Roaming\Microsoft\Windows\Recent"
+
+@call :echo_info Flushing Explorer Icon History caches...
+@call :flush_hidden "%use_userprofile%\AppData\Local\IconCache.db"
+@call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Explorer\IconCacheToDelete"
+@call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDelete"
 
 @call :echo_info Flushing Windows Error Reports...
 @call :flush_entire "%programdata%\Microsoft\Windows\WER"
