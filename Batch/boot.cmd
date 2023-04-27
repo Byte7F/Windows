@@ -1,5 +1,5 @@
 :: Script usage:
-::               installation: %windir%\System32\boot.cmd
+::               installation: %systemroot%\System32\boot.cmd
 ::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
 ::
 :: Command usage:
