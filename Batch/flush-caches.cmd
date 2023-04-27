@@ -1,5 +1,5 @@
 :: Script usage:
-::               installation: %windir%\System32\flush-caches.cmd
+::               installation: %systemroot%\System32\flush-caches.cmd
 ::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
 ::
 :: Command usage:
@@ -189,39 +189,52 @@
 @if "%use_eventvwr%"=="1" @(
  @call :echo_info Running Event Viewer...
  @echo How considerate of you^^!
- @call :run_process "%windir%\System32\eventvwr.exe"
+ @call :run_process "%systemroot%\System32\eventvwr.exe"
 )
 
 :: pushd & flush
 @call :echo_info Flushing common caches...
-@call :flush_entire "C:\Temp"
-@call :flush_entire "C:\Windows\Temp"
+@call :flush_entire "%systemdrive%\Temp"
+@call :flush_entire "%systemroot%\Temp"
 @call :flush_entire "%use_userprofile%\AppData\Local\Temp"
 @call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\AppCache"
 @call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Caches"
 
-@call :echo_info Flushing File History caches...
+@call :echo_info Flushing Windows Explorer File History caches...
 @call :flush_entire "%use_userprofile%\Recent"
 @call :flush_entire "%use_userprofile%\AppData\Roaming\Microsoft\Windows\Recent"
 
-@call :echo_info Flushing Icon History caches...
+@call :echo_info Flushing Windows Explorer Icon History caches...
 @call :flush_hidden "%use_userprofile%\AppData\Local\IconCache.db"
+@call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Explorer\IconCacheToDelete"
+@call :flush_entire "%use_userprofile%\AppData\Local\Microsoft\Windows\Explorer\ThumbCacheToDelete"
 
 @call :echo_info Flushing Windows Update caches...
-@call :flush_entire "C:\Windows\SoftwareDistribution\Download"
-@call :flush_entire "C:\Windows\SoftwareDistribution\EventCache"
-@call :flush_entire "C:\Windows\SoftwareDistribution\PostRebootEventCache"
-@call :flush_entire "C:\Windows\SoftwareDistribution\PostRebootEventCache.V2"
+@call :flush_entire "%systemroot%\SoftwareDistribution\Download"
+@call :flush_entire "%systemroot%\SoftwareDistribution\EventCache"
+@call :flush_entire "%systemroot%\SoftwareDistribution\PostRebootEventCache"
+@call :flush_entire "%systemroot%\SoftwareDistribution\PostRebootEventCache.V2"
+
+@call :echo_info Flushing Windows Error Reports...
+@call :flush_entire "%programdata%\Microsoft\Windows\WER"
 
 @call :echo_info Flushing Crash Dumps & Crash Reports...
 @call :flush_entire "%use_userprofile%\AppData\Local\CrashDumps"
 @call :flush_entire "%use_userprofile%\AppData\Local\CrashRpt\UnsentCrashReports"
 
+@call :echo_info Flushing Windows Defender Support cache...
+@call :flush_entire "%programdata%\Microsoft\Windows Defender\Support"
+
 @call :echo_info Flushing Prefetch caches...
-@call :flush_entire "C:\Windows\Prefetch"
+@call :flush_entire "%systemroot%\Prefetch"
 
 @call :echo_info Flushing DirectX caches...
 @call :flush_entire "%use_userprofile%\AppData\Local\D3DSCache"
+
+@call :echo_info Flushing AMD caches...
+@call :flush_entire "%use_userprofile%\AppData\Local\AMD\DxCache"
+@call :flush_entire "%use_userprofile%\AppData\Local\AMD\GLCache"
+@call :flush_entire "%use_userprofile%\AppData\Local\AMD\VkCache"
 
 @call :echo_info Flushing Microsoft InternetExplorer caches...
 @call :flush_binary "%use_userprofile%\AppData\Local\Microsoft\Windows\INetCache"
@@ -300,11 +313,6 @@
 @call :flush_binary "%use_userprofile%\AppData\Local\Opera Software\Opera Stable\System Cache"
 @call :flush_binary "%use_userprofile%\AppData\Local\Opera Software\Opera Stable\System Cache\Cache_Data"
 
-@call :echo_info Flushing AMD caches...
-@call :flush_entire "%use_userprofile%\AppData\Local\AMD\DxCache"
-@call :flush_entire "%use_userprofile%\AppData\Local\AMD\GLCache"
-@call :flush_entire "%use_userprofile%\AppData\Local\AMD\VkCache"
-
 @call :echo_info Flushing Microsoft SkyDrive caches...
 @call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\AppCache"
 @call :flush_entire "%use_userprofile%\AppData\Local\Packages\microsoft.microsoftskydrive_8wekyb3d8bbwe\AC\INetCache"
@@ -332,10 +340,10 @@
 :: HANDLE: use_procs
 @if "%use_procs%"=="1" @(
  @call :echo_info Running built-in cleaners...
- @call :run_process "%windir%\System32\WSReset.exe"
+ @call :run_process "%systemroot%\System32\WSReset.exe"
  @call :end_process "WinStore.App.exe"
- @call :run_process "%windir%\System32\cleanmgr.exe"
- @call :run_process "%windir%\System32\dfrgui.exe"
+ @call :run_process "%systemroot%\System32\cleanmgr.exe"
+ @call :run_process "%systemroot%\System32\dfrgui.exe"
 )
 
 :: make peace
