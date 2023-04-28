@@ -169,7 +169,7 @@
 
 :: LOG: Windows Version
 @call :echo_info Windows version...
-@for /f "tokens=4-7 delims=. " %%a in ('ver') do @echo Microsoft Windows [Version %%a.%%b.%%c.%%d]
+@for /f "tokens=4-7 delims=[]. " %%a in ('ver') do @echo Microsoft Windows [Version %%a.%%b.%%c.%%d]
 
 :: HANDLE: end_wuauserv
 @set restart_wuauserv=0
