@@ -1,22 +1,25 @@
-:: Script usage:
-::               installation: %systemroot%\System32\boot.cmd
-::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
-::
 :: Command usage:
-::                boot [<*>.exe|<name>]
-::
+::                boot [name|process]
+
 @SetLocal
-@set id_md5_uefn=7f138a09169b250e9dcb378140907378
+
+@set id_uefn=7f138a09169b250e9dcb378140907378
 @set args=%*
-@set proc=%1
-@set proc=%proc:"=%
-@set prefix=^( ^( @start ^"^"
-@set suffix=^&^& @echo started: ^"%proc%^" ^) ^|^| @echo absent: ^"%proc%^" ^)
-@if "%proc:~-4%"==".exe" @%prefix% %args% %suffix%
-@if "%args%"=="firefox"  @%prefix% "%programfiles% (x86)\Mozilla Firefox\private_browsing.exe"                                      %suffix%
-@if "%args%"=="discord"  @%prefix% "%appdata%\..\Local\Discord\Update.exe" --processStart "Discord.exe"                             %suffix%
-@if "%args%"=="epic"     @%prefix% "%programfiles% (x86)\Epic Games\Launcher\Portal\Binaries\Win64\EpicGamesLauncher.exe"           %suffix%
-@if "%args%"=="fn"       @%prefix% "com.epicgames.launcher://apps/Fortnite?action=launch&silent=true"                               %suffix%
-@if "%args%"=="uefn"     @%prefix% "com.epicgames.launcher://apps/fn%%3A%id_md5_uefn%%%3AFortnite_Studio?action=launch&silent=true" %suffix%
+
+:boot
+@( ( @start "" %* && @echo started: "%args%" ) || @echo absent: "%args%" )
+@goto :_run
+
+:run_
+@if "%args%"=="firefox"  @call :boot "%programfiles% (x86)\Mozilla Firefox\private_browsing.exe"
+@if "%args%"=="discord"  @call :boot "%appdata%\..\Local\Discord\Update.exe" --processStart "Discord.exe"
+@if "%args%"=="epic"     @call :boot "%programfiles% (x86)\Epic Games\Launcher\Portal\Binaries\Win64\EpicGamesLauncher.exe"
+@if "%args%"=="fn"       @call :boot "com.epicgames.launcher://apps/Fortnite?action=launch&silent=true"
+@if "%args%"=="uefn"     @call :boot "com.epicgames.launcher://apps/fn%%3A%id_uefn%%%3AFortnite_Studio?action=launch&silent=true"
+@call :boot %args%
+:_run
+
 @EndLocal
+
 @exit /b 0
+
