@@ -1,4 +1,4 @@
-# Notice
+# Disclaimer
 
  My scripts may not be foolproof and/or may not work for your version.
 
