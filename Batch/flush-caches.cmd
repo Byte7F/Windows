@@ -1,7 +1,3 @@
-:: Script usage:
-::               installation: %systemroot%\System32\flush-caches.cmd
-::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
-::
 :: Command usage:
 ::                flush-caches
 ::                             --user [username] :: sets profile for data to be cleared of, uses current username otherwise
@@ -12,17 +8,12 @@
 :: NOTE:
 ::       Removes FileExplorer/WebBrowser/Download history and Prefetch/DirectX/AMD caches (among many other things).
 ::       Please delete any @call :flush_* "*" lines you don't want to commit to (you should probably check the list).
-::
 
-@setLocal enableDelayedExpansion
+@SetLocal EnableDelayedExpansion
 
 @set args=%*
 
-@if "%args%"=="?" @goto :help_
-@if "%args%"=="-?" @goto :help_
 @if "%args%"=="/?" @goto :help_
-@if "%args%"=="help" @goto :help_
-@if "%args%"=="-help" @goto :help_
 @if "%args%"=="/help" @goto :help_
 @goto :_help
 
@@ -33,7 +24,7 @@
 @echo              --use-event [0^|1] :: opens "Event Viewer" if you feel generous to manually scan ^& clear logs &REM use_eventvwr
 @echo              --use-procs [0^|1] :: opens an array of built-in Cleaners: DiskCleanup, WinStoreReset, DeFrag  &REM use_procs
 @echo              --kill-auto [0^|1] :: keeps "Windows Update: Auto-Update (Service)" ^(wuauserv^) stopped       &REM end_wuauserv
-@goto :ExitApp
+@goto :_run
 :_help
 
 :options_
@@ -74,8 +65,8 @@
 @set /p check="Continue (Y/N)? "
 @if "%check:~0,1%"=="Y" @goto :_check
 @if "%check:~0,1%"=="y" @goto :_check
-@if "%check:~0,1%"=="N" @goto :ExitApp
-@if "%check:~0,1%"=="n" @goto :ExitApp
+@if "%check:~0,1%"=="N" @goto :_run
+@if "%check:~0,1%"=="n" @goto :_run
 @echo Invalid input^^!
 @goto :check_
 :_check
@@ -167,9 +158,12 @@
 
 :_functions
 
+:run_
+
 :: LOG: Windows Version
 @call :echo_info Windows version...
-@for /f "tokens=4-7 delims=[]. " %%a in ('ver') do @echo Microsoft Windows [Version %%a.%%b.%%c.%%d]
+@for /f "tokens=4-7 delims=[]. " %%a in ('ver') do @echo set win=%%a
+@echo Windows %win%
 
 :: HANDLE: end_wuauserv
 @set restart_wuauserv=0
@@ -192,7 +186,7 @@
  @call :run_process "%systemroot%\System32\eventvwr.exe"
 )
 
-:: pushd & flush
+:: flush
 @call :echo_info Flushing common caches...
 @call :flush_entire "%systemdrive%\Temp"
 @call :flush_entire "%systemroot%\Temp"
@@ -328,7 +322,7 @@
 @call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\LocalCache"
 @call :flush_entire "%use_userprofile%\AppData\Local\Packages\Microsoft.GamingApp_8wekyb3d8bbwe\TempState"
 
-:: popd & dip
+:: dip
 @cd /d "%~dp0"
 
 :: HANDLE: end_wuauserv
@@ -346,11 +340,13 @@
  @call :run_process "%systemroot%\System32\dfrgui.exe"
 )
 
+:_run
+
 :: make peace
-:ExitApp
 @echo.
 @echo.
 
-@endLocal
+@EndLocal
 
 @exit /b 0
+
