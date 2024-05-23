@@ -1,13 +1,14 @@
-:: Script usage:
-::               installation: %systemroot%\System32\reboot.cmd
-::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
-::
 :: Command usage:
-::                reboot [<*>.exe|<name>]
-::
+::                reboot [name|process]
+
 @SetLocal
+
 @set args=%*
+
 @call kill.cmd %args%
 @call boot.cmd %args%
+
 @EndLocal
+
 @exit /b 0
+
