@@ -1,14 +1,12 @@
-:: Script usage:
-::               installation: %systemroot%\System32\kill.cmd
-::                application: Command Prompt with Administrator privs; quick-access: [Win]+[X] -> [A]dmin Command Prompt
-::
 :: Command usage:
-::                kill [<*>.exe|<name>|all <type>|all]
-::
+::                kill [<process>|<name>|all <type>|all]
+
 @SetLocal
+
 @set args=%*
-@goto :skip
-:func
+@goto :run_
+
+:kill
 @set proc=%3
 @set proc=%proc:"=%
 @if "%args%"=="all"    @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%2"     ) || @echo inactive: "%2"     )
@@ -16,21 +14,27 @@
 @if "%args%"=="%2"     @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%2"     ) || @echo inactive: "%2"     )
 @if "%1 %2"=="* *"     @( ( @taskkill /f /im "%proc%" >nul 2>&1 && @echo stopped: "%proc%" ) || @echo inactive: "%proc%" )
 @exit /b 0
-:skip
+
+:run_
 @set proc=%1
 @set proc=%proc:"=%
-@if "%proc:~-4%"==".exe" @call :func * * "%proc%"
-@call :func web    explorer "iexplore.exe"
-@call :func web    edge     "msedge.exe"
-@call :func web    firefox  "firefox.exe"
-@call :func web    chrome   "chrome.exe"
-@call :func web    opera    "opera.exe"
-@call :func web    torch    "torch.exe"
-@call :func web    safari   "safari.exe"
-@call :func social discord  "Discord.exe"
-@call :func social skype    "Skype.exe"
-@call :func epic   uefn     "UnrealEditorFortnite-Win64-Shipping.exe"
-@call :func epic   fn       "FortniteClient-Win64-Shipping.exe"
-@call :func epic   epic     "EpicGamesLauncher.exe"
+@if "%proc:~-4%"==".exe" @call :kill * * "%proc%"
+::    :kill type   name     "process"
+@call :kill web    explorer "iexplore.exe"
+@call :kill web    edge     "msedge.exe"
+@call :kill web    firefox  "firefox.exe"
+@call :kill web    chrome   "chrome.exe"
+@call :kill web    opera    "opera.exe"
+@call :kill web    torch    "torch.exe"
+@call :kill web    safari   "safari.exe"
+@call :kill social discord  "Discord.exe"
+@call :kill social skype    "Skype.exe"
+@call :kill epic   uefn     "UnrealEditorFortnite-Win64-Shipping.exe"
+@call :kill epic   fn       "FortniteClient-Win64-Shipping.exe"
+@call :kill epic   epic     "EpicGamesLauncher.exe"
+:_run
+
 @EndLocal
+
 @exit /b 0
+
