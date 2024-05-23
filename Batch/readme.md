@@ -1,6 +1,6 @@
 # Notice
 
- My scripts may not be foolproof and/or may not work for your version/language.
+ My scripts may not be foolproof and/or may not work for your version.
 
  Please consider taking a look over these before committing to any usage.
 
