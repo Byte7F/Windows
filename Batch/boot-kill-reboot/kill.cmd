@@ -30,7 +30,9 @@
 @call :kill social discord  "Discord.exe"
 @call :kill social skype    "Skype.exe"
 @call :kill epic   uefn     "UnrealEditorFortnite-Win64-Shipping.exe"
+@call :kill epic   uefn     "urc.exe"
 @call :kill epic   fn       "FortniteClient-Win64-Shipping.exe"
+@call :kill epic   fn       "EpicWebHelper.exe"
 @call :kill epic   epic     "EpicGamesLauncher.exe"
 :_run
 
